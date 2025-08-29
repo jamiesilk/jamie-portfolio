@@ -5,179 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jamie Silk — Creative Writing Portfolio</title>
   <meta name="description" content="The writing portfolio of Jamie Silk: poetry, short fiction, essays, and projects." />
+  <meta name="author" content="Jamie Silk" />
   <link rel="canonical" href="https://jamiesilk.co.uk/" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Jamie Silk — Creative Writing Portfolio" />
   <meta property="og:description" content="Poetry, short fiction, essays, zines, and contact." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jamiesilk.co.uk/" />
-  <meta name="theme-color" content="#0b0b0c" />
+  <meta name="theme-color" content="#0e0e10" />
 
-  <style>
-    :root{
-      --bg: #0b0b0c;
-      --fg: #f9fafb;
-      --muted: #a1a1aa;
-      --accent: #8b5cf6;
-      --accent-2: #22d3ee;
-      --card: #18181b;
-      --shadow: 0 6px 18px rgba(0,0,0,.25);
-      --radius: 20px;
-      --transition: 0.25s ease;
-    }
-
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#ffffff;
-        --fg:#18181b;
-        --muted:#4b5563;
-        --card:#f8fafc;
-        --shadow: 0 6px 18px rgba(0,0,0,.08);
-      }
-    }
-
-    body{
-      margin:0;
-      font:16px/1.65 'Inter', system-ui, -apple-system, sans-serif;
-      color:var(--fg);
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(139,92,246,.14), transparent 70%),
-        radial-gradient(1000px 600px at 110% 10%, rgba(34,211,238,.12), transparent 70%),
-        var(--bg);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    h1,h2,h3{
-      font-family: 'Georgia', serif;
-      font-weight:600;
-      letter-spacing:-0.01em;
-      line-height:1.2;
-    }
-
-    a{
-      color: var(--accent-2);
-      text-decoration:none;
-      transition: color var(--transition);
-    }
-    a:hover{ color: var(--accent); }
-
-    .container{ max-width:960px; margin:0 auto; padding:28px; }
-
-    header{
-      position:sticky;
-      top:0;
-      backdrop-filter:blur(10px);
-      background:color-mix(in hsl, var(--bg) 92%, transparent);
-      border-bottom:1px solid color-mix(in hsl, var(--fg) 10%, transparent);
-      z-index:20;
-    }
-
-    nav{ display:flex; align-items:center; justify-content:space-between; gap:18px; }
-    .brand{ display:flex; align-items:center; gap:12px; font-weight:700; }
-    .dot{
-      width:12px; height:12px; border-radius:50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow:0 0 0 5px color-mix(in hsl, var(--accent) 18%, transparent);
-    }
-    .navlinks a{ margin-left:18px; font-weight:600; color:var(--fg); opacity:.85; }
-    .navlinks a:hover{ opacity:1; }
-
-    .hero{ padding:80px 0 50px; display:grid; gap:24px; }
-    .hero h1{ font-size:clamp(36px,6vw,60px); }
-    .hero p.lead{ font-size:clamp(18px,2.4vw,22px); color:var(--muted); margin-top:10px; max-width:60ch; }
-
-    .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
-    .badge{
-      font-size:13px; padding:6px 12px;
-      border-radius:999px;
-      background: color-mix(in hsl, var(--accent) 10%, var(--card));
-      border:1px solid color-mix(in hsl, var(--fg) 12%, transparent);
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:13px 20px;
-      border-radius:var(--radius);
-      font-weight:600;
-      border:1px solid color-mix(in hsl, var(--fg) 14%, transparent);
-      background:linear-gradient(180deg, color-mix(in hsl, var(--card) 90%, var(--accent) 8%), var(--card));
-      box-shadow:var(--shadow);
-      color:var(--fg);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 10px 20px rgba(0,0,0,.25);
-    }
-    .btn.alt{ background:transparent; }
-
-    section{ padding:40px 0; }
-    h2{ font-size:clamp(24px,3.2vw,34px); margin:0 0 16px; }
-
-    .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-    .card{
-      background:var(--card);
-      border:1px solid color-mix(in hsl, var(--fg) 8%, transparent);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow:var(--shadow);
-      transition: transform var(--transition);
-    }
-    .card:hover{ transform:translateY(-3px); }
-
-    .card h3{ margin:0 0 8px; font-size:20px; }
-    .card p{ margin:0; color:var(--muted); }
-
-    .meta{ color:var(--muted); font-size:14px; }
-
-    .list{ list-style:none; padding:0; margin:0; }
-    .list li{ padding:12px 0; border-bottom:1px dashed color-mix(in hsl, var(--fg) 12%, transparent); }
-    .list li:last-child{ border-bottom:none; }
-
-    .kicker{
-      text-transform:uppercase; font-weight:700;
-      font-size:12px; letter-spacing:.2em; color:var(--muted);
-    }
-
-    .footer{
-      margin-top:40px; padding:30px 0 60px;
-      color:var(--muted);
-      border-top:1px solid color-mix(in hsl, var(--fg) 10%, transparent);
-      font-size:14px;
-      text-align:center;
-    }
-
-    /* poem formatting */
-    .poem{ 
-      white-space:pre-wrap;
-      font-family:Georgia, serif;
-      line-height:1.75;
-      font-size:1rem;
-      color:var(--fg);
-      margin:.75rem 0 0;
-    }
-    .poem .attribution{ color:var(--muted); font-style:italic; }
-
-    /* fade-in animation */
-    @keyframes fadeInUp{
-      from{opacity:0; transform:translateY(20px);}
-      to{opacity:1; transform:translateY(0);}
-    }
-    .hero h1, .hero p, .card{
-      animation:fadeInUp .6s ease both;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <header>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header role="banner">
     <div class="container">
-      <nav>
+      <nav aria-label="Primary">
         <div class="brand">
-          <span class="dot" aria-hidden="true"></span>
+          <span class="sig-dot" aria-hidden="true"></span>
           <span>Jamie Silk</span>
         </div>
-        <div class="navlinks" aria-label="Primary">
-          <a href="#work">Work</a>
+        <div class="navlinks">
+          <a href="#work" aria-current="page">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
@@ -185,95 +37,109 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero" id="top">
-      <div>
-        <span class="kicker">Creative Writing • Canterbury, UK</span>
-        <h1>Poetry, short fiction & essays — by <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent">Jamie Silk</span></h1>
-        <p class="lead">BA (Hons) Creative Writing (Foundation Year). I write about place, memory and the weird little details that make life feel real. This is a living portfolio of drafts, published work and experiments.</p>
-        <div class="badges">
-          <span class="badge">Poetry</span>
-          <span class="badge">Short Fiction</span>
-          <span class="badge">Creative Non-Fiction</span>
-          <span class="badge">Zines</span>
-        </div>
-        <div class="cta">
-          <a class="btn" href="#work">Read my work →</a>
-        </div>
+  <main id="main" class="container">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="intro-heading">
+      <span class="kicker">Creative Writing • Canterbury, UK</span>
+      <h1 id="intro-heading" class="hero-title">
+        Poetry, short fiction & essays — by <span class="name">Jamie Silk</span>
+      </h1>
+      <p class="lead">BA (Hons) Creative Writing (Foundation Year). I write about place, memory and the small unglamorous details that make life feel real. This is a living portfolio of drafts, finished work, and experiments.</p>
+      <div class="badges" aria-label="Genres">
+        <span class="badge" aria-hidden="true">Poetry</span>
+        <span class="badge" aria-hidden="true">Short Fiction</span>
+        <span class="badge" aria-hidden="true">Creative Non-Fiction</span>
+        <span class="badge" aria-hidden="true">Zines</span>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#work">Read my work →</a>
       </div>
     </section>
 
-    <section id="work">
-      <h2>Featured writing</h2>
+    <!-- Work -->
+    <section id="work" aria-labelledby="work-heading">
+      <div class="section-head">
+        <h2 id="work-heading">Featured writing</h2>
+      </div>
+      <hr class="section-rule" />
+
       <div class="grid" role="list">
-        <article class="card" role="listitem">
-          <h3>Burning of the Soul</h3>
-          <p class="meta">2025 • 36 words • <em>Draft</em></p>
-          <p class="poem">
+        <article class="card" role="listitem" aria-labelledby="poem-1">
+          <header>
+            <h3 id="poem-1">Burning of the Soul</h3>
+            <p class="meta" aria-label="Metadata">2025 • 36 words • <em>Draft</em> • Poetry</p>
+          </header>
+          <figure class="poem" aria-labelledby="poem-1">
 At the start of this love, I believed
-That our love was a flame,
-A burning passion of desire.
+that our love was a flame,
+a burning passion of desire.
 But how can we still call this love, my dear,
-When I'm the only one on fire?
-          </p>
-          <p><a href="#">Read →</a></p>
+when I'm the only one on fire?
+            <figcaption class="sr-only">Poem by Jamie Silk</figcaption>
+          </figure>
+          <p class="mt-6"><a href="#" aria-label="Read Burning of the Soul">Read →</a></p>
         </article>
-        <article class="card" role="listitem">
-          <h3>Short story:</h3>
-          <p class="meta">2025 • <em>Revised</em></p>
-          <p>Once ready to release it will be updated here. <a href="#">Read →</a></p>
+
+        <article class="card" role="listitem" aria-labelledby="story-1">
+          <header>
+            <h3 id="story-1">Short story</h3>
+            <p class="meta">2025 • <em>Revised</em> • Fiction</p>
+          </header>
+          <p>Once ready to release, it will be updated here.</p>
+          <p><a href="#" aria-label="Read short story">Read →</a></p>
         </article>
-        <article class="card" role="listitem">
-          <h3>Essay:</h3>
-          <p class="meta">2025 • <em>Published</em></p>
-          <p>Once ready to release it will be updated here. <a href="#">Read →</a></p>
+
+        <article class="card" role="listitem" aria-labelledby="essay-1">
+          <header>
+            <h3 id="essay-1">Essay</h3>
+            <p class="meta">2025 • <em>Published</em> • Creative non-fiction</p>
+          </header>
+          <p>Once ready to release, it will be updated here.</p>
+          <p><a href="#" aria-label="Read essay">Read →</a></p>
         </article>
       </div>
-      <div class="card" style="margin-top:18px">
-        <h3>Latest log</h3>
+
+      <aside class="card mt-18" aria-labelledby="log-heading">
+        <h3 id="log-heading">Latest log</h3>
         <ul class="list">
           <li><strong>Aug 2025:</strong> Setting up portfolio and collecting drafts.</li>
           <li><strong>Jul 2025:</strong> Editing poems.</li>
         </ul>
-      </div>
+      </aside>
     </section>
 
-    <section id="about">
-      <h2>About</h2>
+    <!-- About -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="section-head">
+        <h2 id="about-heading">About</h2>
+      </div>
+      <hr class="section-rule" />
+
       <div class="grid">
-        <div class="card">
-          <p>Hello! I’m Jamie, a creative writing student based in Kent. I'm drawn to love in all its messy forms, poetry that lingers on small human moments, and the dark edges of dystopia. This site is a working public notebook — a mix of finished pieces and experiments side by side.</p>
-          <p><strong>Interests:</strong> Poetry, dystopian themes, love and relationships, place-based writing, mental health, and other strange corners.</p>
-          <p class="meta"><strong>Currently reading:</strong> <em>1984</em> by George Orwell</p>
-        </div>
-        <div class="card">
-          <h3>Clips & zines</h3>
+        <article class="card">
+          <p>Hello — I’m Jamie, a creative writing student in Kent. I’m drawn to love in its messy forms, poetry that lingers on small human moments, and the darker edges of dystopia. This site is a working public notebook: finished pieces beside experiments, because the process matters.</p>
+          <p><strong>Interests:</strong> Poetry, dystopian themes, love & relationships, place-based writing, mental health, and other strange corners.</p>
+          <p class="meta"><strong>Currently reading:</strong> <em>1984</em> by George Orwell.</p>
+        </article>
+
+        <aside class="card" aria-labelledby="clips">
+          <h3 id="clips">Clips & zines</h3>
           <ul class="list">
-            <li><a href="#">Zine: Seaside fragments (PDF)</a></li>
-            <li><a href="#">Newsletter:</a></li>
-            <li><a href="#">Publication:</a></li>
+            <li><a href="#">Zine: <em>Seaside Fragments</em> (PDF)</a></li>
+            <li><a href="#">Newsletter</a></li>
+            <li><a href="#">Publication</a></li>
           </ul>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="section-head">
+        <h2 id="contact-heading">Contact</h2>
+      </div>
+      <hr class="section-rule" />
+
       <div class="card">
-        <p>Want to collaborate, publish, or say hi? Email me: <a href="mailto:jamiecrsilk@gmail.com">jamiecrsilk@gmail.com</a></p>
-      </div>
-    </section>
-
-    <section aria-labelledby="credits-heading">
-      <h2 id="credits-heading" class="sr-only">Credits</h2>
-      <div class="footer">
-        <p>© <span id="year"></span> Jamie Silk. Built with plain HTML/CSS and hosted free.</p>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+        <p>Want to collaborate, publish, or say hi? Email me at
+          <a href="mailto:jamiecrsilk@gmail.com">jamiecrsilk@g
