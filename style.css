@@ -1,71 +1,62 @@
-/* -------------------------
-   Design tokens
---------------------------*/
+/* ============== Design tokens ============== */
 :root{
-  --bg: #0e0e10;
-  --surface: #151517;
-  --ink: #e9e7e1;
-  --muted: #b2b0aa;
-  --accent: #b08d57;
-  --accent-2: #7cc4c9;
-  --rule: #2a2a2e;
-  --radius: 18px;
-  --shadow: 0 8px 22px rgba(0,0,0,.28);
+  --bg: #f7f5f2;          /* paper */
+  --surface: #ffffff;     /* cards */
+  --ink: #1a1a1a;         /* text */
+  --muted: #67615c;       /* secondary text */
+  --accent: #b07a5a;      /* warm highlight */
+  --accent-2: #7db7bb;    /* cool highlight */
+  --rule: #e8e3dd;        /* hairline */
+  --radius: 16px;
+  --shadow: 0 10px 24px rgba(0,0,0,.06);
   --transition: 220ms ease;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
 
-  --measure: 65ch;
+  --measure: 66ch;        /* comfortable line length */
 }
 
-@media (prefers-color-scheme: light){
+@media (prefers-color-scheme: dark){
   :root{
-    --bg:#faf9f6;
-    --surface:#ffffff;
-    --ink:#1b1b1b;
-    --muted:#5a5a5a;
-    --rule:#e9e7e1;
-    --shadow: 0 8px 22px rgba(0,0,0,.08);
+    --bg:#131313; --surface:#1b1b1b; --ink:#eee7de; --muted:#b8b2aa;
+    --rule:#2a2a2a; --shadow:0 10px 24px rgba(0,0,0,.5);
   }
 }
 
-/* -------------------------
-   Base
---------------------------*/
+/* ============== Base ============== */
 html,body{ height:100%; }
 body{
   margin:0;
   color:var(--ink);
   background:
-    radial-gradient(80rem 40rem at -10% -10%, rgba(176,141,87,.10), transparent 60%),
-    radial-gradient(70rem 40rem at 110% 0%, rgba(124,196,201,.10), transparent 60%),
+    radial-gradient(60rem 32rem at -10% -10%, rgba(176,122,90,.08), transparent 60%),
+    radial-gradient(56rem 30rem at 110% 0%, rgba(125,183,187,.08), transparent 60%),
     var(--bg);
-  font:16px/1.65 var(--font-sans);
+  font:17px/1.7 var(--font-serif); /* bookish body */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Typography */
 h1,h2,h3{
-  font-family: var(--font-serif);
-  font-weight: 600;
-  letter-spacing: -0.005em;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: .01em;
   line-height: 1.2;
+  margin: 0;
 }
-h1{ font-size: clamp(2.2rem, 4vw, 3.5rem); }
-h2{ font-size: clamp(1.5rem, 2.4vw, 2.125rem); margin: 0 0 .2rem; }
-h3{ font-size: 1.125rem; margin:.2rem 0 .35rem; }
+h1{ font-size: clamp(2.1rem, 4.2vw, 3.25rem); }
+h2{ font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom:.25rem; }
+h3{ font-size: 1.15rem; margin:.2rem 0 .4rem; }
 
 p,li{ max-width: var(--measure); }
-
 .container{ max-width: 980px; margin:0 auto; padding: 20px clamp(18px, 3vw, 28px); }
 
 a{
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: color-mix(in hsl, var(--accent) 55%, transparent);
+  text-decoration-color: color-mix(in hsl, var(--accent) 60%, transparent);
   text-underline-offset: .18em;
   text-decoration-thickness: .06em;
   transition: color var(--transition), text-decoration-color var(--transition);
@@ -75,71 +66,52 @@ a:hover{
   text-decoration-color: color-mix(in hsl, var(--accent) 90%, var(--accent-2) 10%);
 }
 
-/* Focus styles */
+/* Focus */
 :where(a, button, [tabindex]):focus-visible{
   outline: 2px solid color-mix(in hsl, var(--accent) 70%, var(--accent-2) 30%);
-  outline-offset: 2px;
-  border-radius: 6px;
+  outline-offset: 2px; border-radius: 6px;
 }
 
-/* Visually hidden utility */
-.sr-only{
-  position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
-}
-
-/* Spacing utilities */
+/* Utilities */
+.sr-only{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .mt-6{ margin-top:.65rem; }
 .mt-18{ margin-top:18px; }
 
-/* -------------------------
-   Header / Skip
---------------------------*/
-.skip-link{
-  position: absolute; left: -9999px; top: auto;
-}
+/* ============== Header / Skip ============== */
+.skip-link{ position:absolute; left:-9999px; top:auto; }
 .skip-link:focus{
   left: 12px; top: 12px; background: var(--surface); color: var(--ink);
   padding:.5rem .75rem; border-radius: 8px; box-shadow: var(--shadow);
 }
 
 header{
-  position: sticky; top: 0; z-index: 50;
-  backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: blur(6px);
   background: color-mix(in hsl, var(--bg) 92%, transparent);
   border-bottom: 1px solid var(--rule);
 }
-nav{
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-}
-.brand{
-  display:flex; align-items:center; gap:12px;
-  font-weight: 700; letter-spacing:.02em;
-}
+nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand{ display:flex; align-items:center; gap:10px; font-weight: 800; }
 .sig-dot{
-  width:12px; height:12px; border-radius:50%;
+  width:10px; height:10px; border-radius:50%;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 0 6px color-mix(in hsl, var(--accent) 18%, transparent);
+  box-shadow: 0 0 0 5px color-mix(in hsl, var(--accent) 18%, transparent);
 }
-.navlinks{ display:flex; gap: 16px; align-items:center; }
+.navlinks{ display:flex; gap: 8px; align-items:center; }
 .navlinks a{
-  padding: .35rem .6rem;
-  border-radius: 10px;
-  color: color-mix(in hsl, var(--ink) 85%, var(--muted) 15%);
-  text-decoration: none;
-  font-weight: 600;
+  padding: .35rem .6rem; border-radius: 10px; text-decoration: none;
+  color: color-mix(in hsl, var(--ink) 85%, var(--muted) 15%); font-weight: 600;
 }
 .navlinks a[aria-current="page"]{ color: var(--ink); }
-.navlinks a:hover{ background: color-mix(in hsl, var(--surface) 86%, transparent); }
+.navlinks a:hover{ background: color-mix(in hsl, var(--surface) 92%, transparent); }
 
-/* -------------------------
-   Hero
---------------------------*/
+/* ============== Hero ============== */
 .hero{ padding: 72px 0 36px; display:grid; gap:18px; }
 .kicker{
   text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; color: var(--muted);
   font-family: var(--font-mono);
 }
-.hero-title span.name{
+.hero-title .name{
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   -webkit-background-clip:text; background-clip:text; color: transparent;
 }
@@ -160,64 +132,38 @@ nav{
 .btn{
   display:inline-flex; align-items:center; gap:10px;
   padding:.75rem 1rem; border-radius: var(--radius);
-  font-weight:700;
-  border: 1px solid var(--rule);
-  background: linear-gradient(180deg, color-mix(in hsl, var(--surface) 85%, var(--accent) 15%), var(--surface));
-  box-shadow: var(--shadow);
-  color: var(--ink);
-  text-decoration: none;
+  font-weight:700; border: 1px solid var(--rule);
+  background: linear-gradient(180deg, color-mix(in hsl, var(--surface) 88%, var(--accent) 12%), var(--surface));
+  box-shadow: var(--shadow); color: var(--ink); text-decoration: none;
   transition: transform var(--transition), box-shadow var(--transition);
 }
-.btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,.28); }
+.btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 26px rgba(0,0,0,.12); }
 
-/* -------------------------
-   Sections / Cards / Lists
---------------------------*/
+/* ============== Sections / Cards / Lists ============== */
 section{ padding: 40px 0; }
-.section-head{
-  display:flex; align-items:end; justify-content:space-between; gap: 12px; margin-bottom: 8px;
-}
-.section-rule{
-  height:1px; background: var(--rule);
-  margin: 14px 0 18px; border:0;
-}
+.section-head{ display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom: 8px; }
+.section-rule{ height:1px; background: var(--rule); margin: 14px 0 18px; border:0; }
 
 .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items:stretch; }
 .card{
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  padding: 18px 18px 20px;
-  box-shadow: var(--shadow);
-  transition: transform var(--transition);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 18px 18px 20px; box-shadow: var(--shadow); transition: transform var(--transition);
 }
 .card:hover{ transform: translateY(-3px); }
 .meta{ color: var(--muted); font-size: .9rem; margin: .1rem 0 .3rem; }
 
 .list{ list-style:none; padding:0; margin:0; }
-.list li{
-  padding: 12px 0;
-  border-bottom: 1px dashed var(--rule);
-}
+.list li{ padding: 12px 0; border-bottom: 1px dashed var(--rule); }
 .list li:last-child{ border-bottom: none; }
 
-/* -------------------------
-   Poetry & blockquotes
---------------------------*/
+/* ============== Poetry & quotes ============== */
 .poem{
   font-family: var(--font-serif);
-  white-space: pre-wrap;
-  line-height: 1.7;
-  font-size: 1rem;
-  margin: .6rem 0 0;
+  white-space: pre-wrap; line-height: 1.7; font-size: 1rem; margin: .6rem 0 0;
 }
-/* subtle typewriter-style line */
 .poem::before{
-  content:"";
-  display:block;
-  width: 54px; height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  margin: .1rem 0 .6rem;
+  content:""; display:block; width: 54px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent); margin: .1rem 0 .6rem;
 }
 .attribution{ color: var(--muted); font-style: italic; }
 
@@ -228,20 +174,13 @@ blockquote{
   font-family: var(--font-serif);
 }
 
-/* -------------------------
-   Footer
---------------------------*/
+/* ============== Footer ============== */
 footer{
-  margin-top: 32px; padding: 28px 0 60px;
-  color: var(--muted);
-  border-top: 1px solid var(--rule);
-  font-size: .95rem;
-  text-align: center;
+  margin-top: 32px; padding: 28px 0 60px; color: var(--muted);
+  border-top: 1px solid var(--rule); font-size: .95rem; text-align: center;
 }
 
-/* -------------------------
-   Motion preferences
---------------------------*/
+/* Motion prefs */
 @media (prefers-reduced-motion: reduce){
   *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
